@@ -1,0 +1,16 @@
+1.TryCatch is a HOD funcn ehich call another funcn basically it exectues try catch *Used for Code reduancy
+2.For Error Handling Express provide a way to deal with Error we have used it in app.js at last 
+    eg->app.use(errorMiddleware) express whenever has error thorow error to it 
+    we use it as ->Error Handling 1.Create Error instance 2.add statuscode,name,.. 3.then send using next
+    eg->const error=new Error("Message") next(error)
+3.Now Flow 
+    1.Try catch runs
+    2.ErrorHandler->class ,child of Error->which is default errorMiddleware.js
+        2.1.if error occurs it calls an ErrorHandler(//constructor) which contain Message and statuscode
+        2.2.in ErrorHandler it call an a super()->used to invoke an a parent constructor and send a status code 
+    3.At last our errorMiddleware works
+default error->errorMiddleware <-ErrorHandler child
+flow->TryCatch(if error ) ->catch->next->errorMiddleware
+
+ErrorHandler->  When you use next(new ErrorHandler("Error Message", statusCode)) in your route handler or other middleware, you're creating an error object with a custom message and status code that will be forwarded to the errorMiddleware.
+errorMiddleware->errorMiddleware is the central, default error handler that catches all errors passed via next(error) and formats the response for the client
