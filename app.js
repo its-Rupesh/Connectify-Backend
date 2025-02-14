@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import { errorMiddleware } from "./middlewares/error.js";
 import { connectDB } from "./utils/features.js";
-import { getSockets, getSocketsForUser } from "../server/lib/helper.js";
+import { getSockets } from "./lib/helper.js";
 import { Server } from "socket.io";
 import { createServer } from "http";
 import chatRouter from "./routes/chat.js";
